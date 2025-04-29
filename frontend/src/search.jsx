@@ -17,7 +17,7 @@ export default function Search() {
 
     return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-            <h1>Home Cafe Collection</h1>
+            <h1 className="custom-header">Home Cafe Collection</h1>
             <p></p>
             <form>
                 <input type="text" id="search" name="search" placeholder="Search"/><br />
@@ -44,16 +44,43 @@ export default function Search() {
                 {recipes.length === 0 ? (
                     <p>No recipes found.</p>
                 ) : (
-                    <ul>
+                    <ul
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                            gap: '20px',
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: 0,
+                        }}
+                    >
                         {recipes.map((recipe, index) => (
-                            <li key={index}>
+                            <li
+                                key={index}
+                                style={{
+                                    border: '1px solid #ccc',
+                                    borderRadius: '8px',
+                                    padding: '16px',
+                                    backgroundColor: '#f9f9f9',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                }}
+                            >
                                 <h3>{recipe.name}</h3>
-                                <img src={recipe.image} width="200" height="200" alt="recipe" />
+                                <img
+                                    src={recipe.image}
+                                    alt={recipe.name}
+                                    style={{
+                                        width: '100%',
+                                        height: '200px',
+                                        objectFit: 'cover',
+                                        borderRadius: '8px',
+                                        marginBottom: '1rem',
+                                    }}
+                                />
                                 <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
                                 <p><strong>Equipment:</strong> {recipe.equip}</p>
                                 <p><strong>Steps:</strong> {recipe.steps}</p>
                                 <p><strong>Time:</strong> {recipe.time}</p>
-                                <p><strong>Type:</strong> {recipe.type}</p>
                             </li>
                         ))}
                     </ul>
