@@ -1,14 +1,14 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import Search from './search.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <App />
+        <Search />
     </StrictMode>,
 )
 
-export default function App() {
+/*export default function App() {
     return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
             <h1>Home Cafe Collection</h1>
@@ -35,4 +35,4 @@ export default function App() {
 
         </div>
     );
-}
+}*/
