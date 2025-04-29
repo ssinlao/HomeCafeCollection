@@ -25,7 +25,7 @@ export default function Search() {
             </form>
 
             <h3>Equipment</h3>
-            <div class={"equipment"}>
+            <div className={"equipment"}>
                 <label htmlFor="espMachine"><input type="checkbox"/>Espresso Machine</label>
                 <label htmlFor="electWhisk"><input type="checkbox"/>Electric Whisk</label>
             </div>
