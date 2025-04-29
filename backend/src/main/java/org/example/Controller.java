@@ -1,15 +1,19 @@
 package org.example;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController  // Indicates that this is a REST controller
-@RequestMapping("/api")  // Define base URL for all API endpoints in this controller
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.List;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:5173")  // Allow requests from your React frontend
 public class Controller {
 
-    @GetMapping("/hello")  // Define an endpoint for a GET request
-    public String sayHello() {
-        return "Hello from Spring Boot!";
+    @GetMapping("/api/recipes")
+    public List<Recipe> getRecipes() throws IOException, GeneralSecurityException {
+        return RecipeGoogleSheetsAPI.getRecipes();
     }
 }
