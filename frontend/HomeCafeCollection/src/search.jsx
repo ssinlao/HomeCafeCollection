@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function App() {
+export default function Search() {
     return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
             <h1>Home Cafe Collection</h1>
