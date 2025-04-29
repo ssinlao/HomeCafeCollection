@@ -48,6 +48,7 @@ export default function Search() {
                         {recipes.map((recipe, index) => (
                             <li key={index}>
                                 <h3>{recipe.name}</h3>
+                                <img src={recipe.image} width="200" height="200" alt="recipe" />
                                 <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
                                 <p><strong>Equipment:</strong> {recipe.equip}</p>
                                 <p><strong>Steps:</strong> {recipe.steps}</p>

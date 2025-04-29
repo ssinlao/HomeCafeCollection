@@ -9,7 +9,7 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")  // Allow requests from your React frontend
+@CrossOrigin(origins = "http://localhost:8080")  // Allow requests from your React frontend
 public class Controller {
 
     @GetMapping("/api/recipes")

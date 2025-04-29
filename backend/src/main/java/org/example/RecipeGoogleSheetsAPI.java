@@ -15,7 +15,7 @@ public class RecipeGoogleSheetsAPI {
     public static List<Recipe> getRecipes() throws IOException, GeneralSecurityException {
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         final String spreadsheetId = "19GS84f9oHJlmNnnhIR0dmjfV2XIa47DI1Js3-flW45o";
-        final String range = "RecipeData!A2:F";
+        final String range = "RecipeData!A2:G";
 
         Sheets service = new Sheets.Builder(
                 HTTP_TRANSPORT,
@@ -39,8 +39,9 @@ public class RecipeGoogleSheetsAPI {
             String steps = row.get(3).toString();
             String time = row.get(4).toString();
             String type = row.get(5).toString();
+            String image = row.get(6).toString();
 
-            recipes.add(new Recipe(name, ingredients, equip, steps, time, type));
+            recipes.add(new Recipe(name, ingredients, equip, steps, time, type, image));
         }
 
         return recipes;
