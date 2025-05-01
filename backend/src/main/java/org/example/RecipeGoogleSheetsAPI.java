@@ -12,6 +12,7 @@ import java.util.List;
 
 public class RecipeGoogleSheetsAPI {
 
+    // main method to return all of the recipes in the database
     public static List<Recipe> getRecipes() throws IOException, GeneralSecurityException {
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         final String spreadsheetId = "19GS84f9oHJlmNnnhIR0dmjfV2XIa47DI1Js3-flW45o";

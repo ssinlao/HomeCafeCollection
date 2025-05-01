@@ -3,17 +3,38 @@ import React, { useEffect, useState } from 'react';
 export default function Search() {
 
     const [recipes, setRecipes] = useState([]);
+    const [selectedTypes, setSelectedTypes] = useState([]);
 
     // Fetch recipes from the backend when the component mounts
     useEffect(() => {
-        fetch('/api/recipes')
+        let url = '/api/recipes';
+        if (selectedTypes.length === 1) {
+            url += `?type=${selectedTypes[0]}`;
+        }
+
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);  // Log the data to check its structure
-                setRecipes(data);  // Set the recipes
+                console.log(data);
+                setRecipes(data);
             })
             .catch((error) => console.error('Error fetching recipes:', error));
-    }, []);
+    }, [selectedTypes]);
+
+    const handleTypeChange = (type) => {
+        setSelectedTypes((prevSelected) =>
+            prevSelected.includes(type)
+                ? prevSelected.filter((t) => t !== type) // remove if already selected
+                : [...prevSelected, type] // add if not selected
+        );
+    };
+
+    const filteredRecipes =
+        selectedTypes.length === 0
+            ? recipes
+            : recipes.filter((recipe) =>
+                selectedTypes.includes(recipe.type.toLowerCase())
+            );
 
     return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
@@ -32,11 +53,46 @@ export default function Search() {
 
             <h3>Types</h3>
             <div className={"bevType"}>
-                <label htmlFor="Coffee"><input type="checkbox"/>Coffee</label>
-                <label htmlFor="matcha"><input type="checkbox"/>Matcha</label>
-                <label htmlFor="nonCaf"><input type="checkbox"/>Non Caffinated</label>
-                <label htmlFor="smoothie"><input type="checkbox"/>Smoothie</label>
-                <label htmlFor="tea"><input type="checkbox"/>Tea</label>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={() => handleTypeChange('coffee')}
+                        checked={selectedTypes.includes('coffee')}
+                    />
+                    Coffee
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={() => handleTypeChange('matcha')}
+                        checked={selectedTypes.includes('matcha')}
+                    />
+                    Matcha
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={() => handleTypeChange('non caffinated')}
+                        checked={selectedTypes.includes('non caffinated')}
+                    />
+                    Non Caffinated
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={() => handleTypeChange('smoothie')}
+                        checked={selectedTypes.includes('smoothie')}
+                    />
+                    Smoothie
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        onChange={() => handleTypeChange('tea')}
+                        checked={selectedTypes.includes('tea')}
+                    />
+                    Tea
+                </label>
             </div>
 
             <h2>Recipes</h2>
