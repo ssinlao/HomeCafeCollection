@@ -71,7 +71,7 @@ export default function Search() {
                                     alt={recipe.name}
                                     style={{
                                         width: '100%',
-                                        height: '200px',
+                                        height: '300px',
                                         objectFit: 'cover',
                                         borderRadius: '8px',
                                         marginBottom: '1rem',

@@ -29,6 +29,8 @@ public class RecipeGoogleSheetsAPI {
                 .get(spreadsheetId, range)
                 .execute();
 
+        /* make a list of the recipes so each card can have the info */
+
         List<List<Object>> values = response.getValues();
         List<Recipe> recipes = new ArrayList<>();
 
