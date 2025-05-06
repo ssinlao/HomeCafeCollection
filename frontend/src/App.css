@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: #d1dff6;
     background-size: 100% 100%;
     background-attachment: fixed;
 }
@@ -13,14 +13,26 @@ body {
 
 .custom-header {
     font-family: 'PlayfulMonalisaSans', serif;
-    font-size: 90px;
+    font-size: 50px;
     color: white;
     filter: drop-shadow(5px 5px #000000);
+    text-align: center;
+}
+
+.boxes div {
+    float: left;
+    clear: none;
+    padding-right: 30px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
 }
 
 input[type="text"] {
-    width: 300px;
-    height: 40px;
+    width: 225px;
+    height: 30px;
     border-radius: 15px;
     padding: 10px;
     font-size: 16px;
@@ -49,3 +61,20 @@ input[type="submit"]:hover {
     background-color: #4caf50;
 }
 
+.equipment{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.equipment label {
+    display: inline-flex;
+}
+
+.bevType{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.bevType label {
+    display: inline-flex;
+}
