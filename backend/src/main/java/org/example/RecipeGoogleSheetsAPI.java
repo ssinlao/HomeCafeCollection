@@ -8,6 +8,7 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecipeGoogleSheetsAPI {
@@ -46,7 +47,6 @@ public class RecipeGoogleSheetsAPI {
 
             recipes.add(new Recipe(name, ingredients, equip, steps, time, type, image));
         }
-
         return recipes;
     }
 }
