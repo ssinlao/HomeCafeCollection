@@ -4,6 +4,7 @@ export default function Search() {
 
     const [recipes, setRecipes] = useState([]);
     const [selectedTypes, setSelectedTypes] = useState([]);
+    const [selectedEquip, setSelectedEquip] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     // Fetch recipes from the backend when the component mounts
@@ -13,6 +14,10 @@ export default function Search() {
 
         if (selectedTypes.length === 1) {
             params.append('type', selectedTypes[0]);
+        }
+
+        if (selectedEquip.length === 1) {
+            params.append('equip', selectedEquip[0]);
         }
 
         if(searchTerm.trim()){
@@ -26,7 +31,7 @@ export default function Search() {
                 setRecipes(data);
             })
             .catch((error) => console.error('Error fetching recipes:', error));
-    }, [selectedTypes, searchTerm]);
+    }, [selectedTypes, selectedEquip, searchTerm]);
 
     const handleTypeChange = (type) => {
         setSelectedTypes((prevSelected) =>
@@ -36,18 +41,31 @@ export default function Search() {
         );
     };
 
-    const filteredRecipes =
-        selectedTypes.length === 0
-            ? recipes
-            : recipes.filter((recipe) =>
-                selectedTypes.includes(recipe.type.toLowerCase())
-            );
+    const handleEquipChange = (equip) => {
+        setSelectedEquip((prevSelected) =>
+            prevSelected.includes(equip)
+                ? prevSelected.filter((e) => e !== equip)  // remove
+                : [...prevSelected, equip]                 // add
+        );
+    };
+
+    const filteredRecipes = recipes.filter((recipe) =>
+        (selectedTypes.length === 0 || selectedTypes.includes(recipe.type.toLowerCase())) &&
+        (selectedEquip.length === 0 || selectedEquip.some(equip => recipe.equip.toLowerCase().includes(equip.toLowerCase())))
+    );
 
     return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
             <h1 className="custom-header">Home Cafe Collection</h1>
             <div className={"boxes"}>
-                <div className={"filters"}>
+                <div className={"filters"}
+                     style={{
+                         backgroundColor: '#ffffff',
+                         padding: '2rem',
+                         borderRadius: '10px'
+
+                     }}
+                >
                     <form onSubmit={(e) => e.preventDefault()}>
                         <input type="text" id="search" name="search" placeholder="Search"
                                value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/><br />
@@ -55,8 +73,22 @@ export default function Search() {
 
                     <h3>Equipment</h3>
                     <div className={"equipment"}>
-                        <label htmlFor="espMachine"><input type="checkbox"/>Espresso Machine</label>
-                        <label htmlFor="electWhisk"><input type="checkbox"/>Electric Whisk</label>
+                        <label>
+                            <input
+                                type="checkbox"
+                                onChange={() => handleEquipChange('Espresso Machine')}
+                                checked={selectedEquip.includes('Espresso Machine')}
+                            />
+                            Espresso Machine
+                        </label>
+                        <label>
+                            <input
+                                type="checkbox"
+                                onChange={() => handleEquipChange('Electric Whisk')}
+                                checked={selectedEquip.includes('Electric Whisk')}
+                            />
+                            Electric Whisk
+                        </label>
                     </div>
 
                     <h3>Types</h3>
@@ -105,7 +137,6 @@ export default function Search() {
                 </div>
 
                 <div>
-                    <h2>Recipes</h2>
                     <div>
                         {filteredRecipes.length === 0 ? (  // Replace recipes with filteredRecipes
                             <p>No recipes found.</p>

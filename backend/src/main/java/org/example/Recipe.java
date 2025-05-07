@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Recipe {
     String name;
     String ingredients;
@@ -25,6 +29,6 @@ public class Recipe {
     public String getEquip() { return equip; }
     public String getSteps() { return steps; }
     public String getTime() { return time; }
-    public String getType() { return type; }
+    public String getType() {return type;}
     public String getImage() { return image; }
 }

@@ -17,7 +17,8 @@ public class Controller {
     @GetMapping("/api/recipes")
     public List<Recipe> getRecipes(
             @RequestParam(value = "type", required = false) String type,
-            @RequestParam(value = "search", required = false) String search
+            @RequestParam(value = "search", required = false) String search,
+            @RequestParam(value = "equip", required = false) String equip
     ) throws IOException, GeneralSecurityException {
 
         List<Recipe> allRecipes = RecipeGoogleSheetsAPI.getRecipes();
@@ -27,8 +28,8 @@ public class Controller {
             boolean matchesType = (type == null || type.isEmpty()) || type.equalsIgnoreCase(recipe.getType());
             boolean matchesSearch = (search == null || search.isEmpty()) ||
                     recipe.getName().toLowerCase().contains(search.toLowerCase());
-
-            if (matchesType && matchesSearch) {
+            boolean matchesEquip = (equip == null || equip.isEmpty()) || equip.equalsIgnoreCase(recipe.getEquip());
+            if (matchesType && matchesSearch && matchesEquip) {
                 filteredRecipes.add(recipe);
             }
         }
