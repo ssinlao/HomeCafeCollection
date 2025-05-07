@@ -28,14 +28,7 @@ public class GoogleSheetsConfig {
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     public static final String APPLICATION_NAME = "Home Cafe Collection";
 
-    public static Sheets getSheetsService() throws IOException, GeneralSecurityException {
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-    }
-
-    static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException, GeneralSecurityException {
         // Load client secrets
         InputStream in = GoogleSheetsConfig.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {

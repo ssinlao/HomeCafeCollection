@@ -19,7 +19,7 @@ export default function Search() {
             params.append('search', searchTerm.trim());
         }
 
-        fetch('${url}?${params.toString()')
+        fetch(`${url}?${params.toString()}`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -108,7 +108,7 @@ export default function Search() {
                 <div>
                     <h2>Recipes</h2>
                     <div>
-                        {recipes.length === 0 ? (
+                        {filteredRecipes.length === 0 ? (  // Replace recipes with filteredRecipes
                             <p>No recipes found.</p>
                         ) : (
                             <ul
@@ -121,7 +121,7 @@ export default function Search() {
                                     margin: 0,
                                 }}
                             >
-                                {recipes.map((recipe, index) => (
+                                {filteredRecipes.map((recipe, index) => (
                                     <li
                                         key={index}
                                         style={{
@@ -133,7 +133,17 @@ export default function Search() {
                                         }}
                                     >
                                         <h3>{recipe.name}</h3>
-
+                                        <img
+                                            src={recipe.image}
+                                            alt={recipe.name}
+                                            style={{
+                                                width: '100%',
+                                                height: '300px',
+                                                objectFit: 'cover',
+                                                borderRadius: '8px',
+                                                marginBottom: '1rem',
+                                            }}
+                                        />
                                         <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
                                         <p><strong>Equipment:</strong> {recipe.equip}</p>
                                         <p><strong>Steps:</strong> {recipe.steps}</p>

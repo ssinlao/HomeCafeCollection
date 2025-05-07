@@ -11,22 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")  // Allow requests from your React frontend
+@CrossOrigin(origins = "http://localhost:3000")  // Allow requests from your React frontend
 public class Controller {
 
     @GetMapping("/api/recipes")
-    public List<Recipe> getRecipes(@RequestParam(value = "type", required = false) String type) throws IOException, GeneralSecurityException {
+    public List<Recipe> getRecipes(
+            @RequestParam(value = "type", required = false) String type,
+            @RequestParam(value = "search", required = false) String search
+    ) throws IOException, GeneralSecurityException {
 
         List<Recipe> allRecipes = RecipeGoogleSheetsAPI.getRecipes();
-
-        if (type == null || type.isEmpty()) {
-            return allRecipes; // no filter, return everything
-        }
-
-        // type is used for filtering function in react
         List<Recipe> filteredRecipes = new ArrayList<>();
+
         for (Recipe recipe : allRecipes) {
-            if (type.equalsIgnoreCase(recipe.getType())) {
+            boolean matchesType = (type == null || type.isEmpty()) || type.equalsIgnoreCase(recipe.getType());
+            boolean matchesSearch = (search == null || search.isEmpty()) ||
+                    recipe.getName().toLowerCase().contains(search.toLowerCase());
+
+            if (matchesType && matchesSearch) {
                 filteredRecipes.add(recipe);
             }
         }
