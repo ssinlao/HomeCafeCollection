@@ -51,7 +51,6 @@ export default function Search() {
                     <form onSubmit={(e) => e.preventDefault()}>
                         <input type="text" id="search" name="search" placeholder="Search"
                                value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/><br />
-                        <input type="submit" value="Submit" /><br />
                     </form>
 
                     <h3>Equipment</h3>
@@ -113,8 +112,8 @@ export default function Search() {
                         ) : (
                             <ul
                                 style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
                                     gap: '20px',
                                     listStyle: 'none',
                                     padding: 0,
@@ -130,6 +129,8 @@ export default function Search() {
                                             padding: '16px',
                                             backgroundColor: '#f9f9f9',
                                             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                            width: '300px',
+                                            display: 'block',
                                         }}
                                     >
                                         <h3>{recipe.name}</h3>

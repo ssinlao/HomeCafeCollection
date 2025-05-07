@@ -17,12 +17,14 @@ body {
     color: white;
     filter: drop-shadow(5px 5px #000000);
     text-align: center;
+    margin: 0;
+    padding-bottom: 10px;
 }
 
-.boxes div {
-    float: left;
-    clear: none;
-    padding-right: 30px;
+.boxes {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
 .filters {
@@ -43,22 +45,6 @@ input[type="text"] {
 
 input[type="text"]::placeholder {
     color: #888;
-}
-
-input[type="submit"] {
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #66bb6a;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #4caf50;
 }
 
 .equipment{
