@@ -6,6 +6,11 @@ Maddie Isaacs
 Brief summary of the project goal, features, and intended users
 ## How to Run
 Must request token to get access to Google Sheets API
+
+```
+  npm install
+  npm run dev
+```
 ## Features 
 - Pulls from custom made API using Google Sheets API
 - Uses HTTPS to get requests from the frontend and call to the backend
