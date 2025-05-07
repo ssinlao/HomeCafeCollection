@@ -1,6 +1,6 @@
-# Project Title	
+# Home Cafe Collection	
 Clear, creative name of your project
-# Team Members	
+## Team Members	
 Full names and roles of team members
 # Project Description	
 Brief summary of the project goal, features, and intended users
