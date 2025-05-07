@@ -13,6 +13,6 @@ Must request token to get access to Google Sheets API
 ## Future Work	
 Planned enhancements or incomplete features
 ## Known Issues	
-Any bugs or limitations
+- Currently doesn't allow the recipes to fall under multiple categories
 ## Screenshots/GIFs	
 Optional, but highly encouraged to show UI or game elements
