@@ -1,7 +1,7 @@
 # Home Cafe Collection	
-Clear, creative name of your project
 ## Team Members	
-Full names and roles of team members
+Stella Sinlao
+Maddie Isaacs
 # Project Description	
 Brief summary of the project goal, features, and intended users
 # How to Run	
