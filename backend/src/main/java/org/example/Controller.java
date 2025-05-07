@@ -11,8 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")  // Allow requests from your React frontend
+@CrossOrigin(origins = "http://localhost:3000")  // allow requests from react frontend
 public class Controller {
+
+    /* Method getRecipes() returns a filtered list of recipes if the user chooses any filters or else it returns all of the recipes in the database
+    *  boolean matchesType, matchesSearch, matchesEquip are used to check if the filters / search queries are used
+    */
 
     @GetMapping("/api/recipes")
     public List<Recipe> getRecipes(

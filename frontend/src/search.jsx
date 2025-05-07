@@ -36,16 +36,16 @@ export default function Search() {
     const handleTypeChange = (type) => {
         setSelectedTypes((prevSelected) =>
             prevSelected.includes(type)
-                ? prevSelected.filter((t) => t !== type) // remove if already selected
-                : [...prevSelected, type] // add if not selected
+                ? prevSelected.filter((t) => t !== type) // remove filter
+                : [...prevSelected, type] // add filter
         );
     };
 
     const handleEquipChange = (equip) => {
         setSelectedEquip((prevSelected) =>
             prevSelected.includes(equip)
-                ? prevSelected.filter((e) => e !== equip)  // remove
-                : [...prevSelected, equip]                 // add
+                ? prevSelected.filter((e) => e !== equip)  // remove filter
+                : [...prevSelected, equip] // add filter
         );
     };
 
@@ -138,7 +138,7 @@ export default function Search() {
 
                 <div>
                     <div>
-                        {filteredRecipes.length === 0 ? (  // Replace recipes with filteredRecipes
+                        {filteredRecipes.length === 0 ? (
                             <p>No recipes found.</p>
                         ) : (
                             <ul

@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
+/* Recipe class: contains all of the attributes that can be taken from the database */
 public class Recipe {
     String name;
     String ingredients;

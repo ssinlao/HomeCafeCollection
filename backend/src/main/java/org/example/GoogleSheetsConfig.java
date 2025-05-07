@@ -28,8 +28,11 @@ public class GoogleSheetsConfig {
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     public static final String APPLICATION_NAME = "Home Cafe Collection";
 
+    /* Method getCredentials() allows us to use the Google Sheets API and starts the Authorization Flow created by Google
+    *   - this code was derived from Google's "Java Quick Start" documentation
+    */
+
     static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException, GeneralSecurityException {
-        // Load client secrets
         InputStream in = GoogleSheetsConfig.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
@@ -37,7 +40,6 @@ public class GoogleSheetsConfig {
 
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-        // Build flow and trigger user authorization request
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
@@ -48,9 +50,9 @@ public class GoogleSheetsConfig {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
+    /* main method allows us to generate token for our ability to access the database */
     public static void main(String[] args) {
         try {
-            // This will trigger the authentication flow
             NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
             getCredentials(httpTransport);
             System.out.println("Authentication successful!");
