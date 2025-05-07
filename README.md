@@ -1,6 +1,6 @@
 # Home Cafe Collection	
 ## Team Members	
-Stella Sinlao___
+Stella Sinlao <br/>
 Maddie Isaacs
 # Project Description	
 Brief summary of the project goal, features, and intended users
