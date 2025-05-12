@@ -25,3 +25,5 @@ and click on the localhost:5173 link
 - Currently doesn't allow the recipes to fall under multiple categories
 ## Screenshots/GIFs	
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e195cd92-f410-4baa-92d8-f1e29bb010e9)
+## Video Demo
+[![HomeCafeCollection Demo](https://img.youtube.com/vi/LpO73LdRPX0/0.jpg)](https://youtu.be/LpO73LdRPX0)
