@@ -47,7 +47,6 @@ public class RecipeGoogleSheetsAPI {
 
             recipes.add(new Recipe(name, ingredients, equip, steps, time, type, image));
         }
-
         return recipes;
     }
 }
